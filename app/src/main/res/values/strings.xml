@@ -13,4 +13,5 @@
     <string name="sign_in">Sign in</string>
     <string name="new_guy">Are you the new guy everyone talking about?</string>
     <string name="logged_out">Oops, you logged out!</string>
+    <string name="sign_up">Sign up</string>
 </resources>

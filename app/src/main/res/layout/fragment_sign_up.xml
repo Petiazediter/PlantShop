@@ -19,22 +19,21 @@
         style="@style/LoginH1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_marginVertical="40dp"
         android:text="@string/join_now"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linear" />
+        app:layout_constraintBottom_toTopOf="@id/linear"
+        app:layout_constraintLeft_toLeftOf="@id/linear" />
 
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="40dp"
+        android:layout_margin="20dp"
         android:orientation="vertical"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintLeft_toLeftOf="@id/h1"
-        app:layout_constraintRight_toRightOf="@id/h1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintWidth_percent=".7">
 
         <EditText
             android:id="@+id/username"
@@ -78,23 +77,23 @@
         android:id="@+id/sign_up_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/linear"
-        app:layout_constraintLeft_toLeftOf="@id/linear"
-        app:layout_constraintRight_toRightOf="@id/linear"
         android:layout_marginVertical="40dp"
-        android:text="Sign up"
-        android:textSize="20sp"
         android:fontFamily="@font/ubuntu_bold"
-        android:layout_marginEnd="50dp"
-        android:textAllCaps="false"/>
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@id/linear"
+        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintWidth_percent=".5" />
 
     <TextView
         android:id="@+id/to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/to_login"
-        app:layout_constraintTop_toBottomOf="@id/sign_up_button"
-        app:layout_constraintLeft_toLeftOf="@id/linear"
         android:layout_marginVertical="20dp"
-        android:fontFamily="@font/ubuntu_light_italic"/>
+        android:fontFamily="@font/ubuntu_light_italic"
+        android:text="@string/to_login"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/linear"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
