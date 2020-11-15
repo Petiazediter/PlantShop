@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "243805051267",
+    "firebase_url": "https://plantapp-3753d.firebaseio.com",
+    "project_id": "plantapp-3753d",
+    "storage_bucket": "plantapp-3753d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243805051267:android:fef2395f89e5fe20c5beb6",
+        "android_client_info": {
+          "package_name": "com.codecool.applicationa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243805051267-9qfusrb55ho2m4fhn8kamq2qukm29qkr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnRJThgHs5xQuJCyAE0be4-vmE1DGnT4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243805051267-9qfusrb55ho2m4fhn8kamq2qukm29qkr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
