@@ -55,7 +55,7 @@ class KoinSignUp : KoinComponent, SignUpService {
                     it.user?.let{mUser ->
                     val id = mUser.uid
                     databaseReference.child(id)
-                        .setValue(user::class.java)
+                        .setValue(user)
                     }
                     callback.onSuccess()
                 }

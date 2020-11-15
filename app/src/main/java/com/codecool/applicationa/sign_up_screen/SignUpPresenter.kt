@@ -14,11 +14,11 @@ class SignUpPresenter : KoinComponent {
     private var view : SignUpContractor? = null
 
     fun onAttach(v : SignUpContractor){
-        view = v
+        this.view = v
     }
 
     fun onDeatch(){
-        view = null
+        this.view = null
     }
 
     fun attemptRegister(username : String, password : String, password2 : String, email : String){
