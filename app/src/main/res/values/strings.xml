@@ -24,4 +24,5 @@
     <string name="success_register">Registration completed!</string>
 
     <string name="error_sign_in">The given datas are invalid!</string>
+    <string name="success_sign_in">Sign in completed!</string>
 </resources>

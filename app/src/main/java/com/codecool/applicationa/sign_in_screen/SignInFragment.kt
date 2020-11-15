@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.codecool.applicationa.R
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -34,6 +35,24 @@ class SignInFragment : Fragment(), SignInContractor{
             val username = username.text.toString()
             val password = password.text.toString()
             presenter.attemptSignIn(username,password)
+            sign_in_button.isEnabled = false
         }
+    }
+
+    override fun onError(messageId: Int) {
+        sign_in_button.isEnabled = true
+        context?.let{
+            Toast.makeText(it, resources.getString(messageId),Toast.LENGTH_LONG)
+                .show()
+        }
+    }
+
+    override fun onSuccess() {
+        sign_in_button.isEnabled = true
+        context?.let{
+            Toast.makeText(it, resources.getString(R.string.success_sign_in),Toast.LENGTH_LONG)
+                .show()
+        }
+        findNavController().navigate(R.id.action_signInFragment_to_mainPageFragment)
     }
 }
