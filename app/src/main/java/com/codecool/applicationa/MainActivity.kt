@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.navigation.findNavController
 import com.codecool.applicationa.database.DatabaseSingleton
+import com.codecool.applicationa.logged_in_activity.LoggedInActivity
 import com.codecool.applicationa.splash_screen.SplashActivity
 
 class MainActivity : AppCompatActivity(), MainActivityPresenterView {
@@ -48,7 +49,13 @@ class MainActivity : AppCompatActivity(), MainActivityPresenterView {
     }
 
     override fun isUserValid(result: Boolean) {
-        val fragmentNavigator = findNavController(R.id.fragment)
-        
+        if ( result ) {
+            val loggedInActivity = Intent(applicationContext,LoggedInActivity::class.java)
+            startActivity(loggedInActivity)
+            finish()
+        } else {
+            DatabaseSingleton.getAuth()
+                .signOut()
+        }
     }
 }

@@ -54,7 +54,8 @@ class KoinSignUp : KoinComponent, SignUpService {
             .addOnCompleteListener{
                 it.addOnSuccessListener {
                     it.user?.let{mUser ->
-                    val id = mUser.uid
+                        val id = mUser.uid
+                        user.userId = mUser.uid
                     databaseReference.child(id)
                         .setValue(user)
                     }

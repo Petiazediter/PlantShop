@@ -1,5 +1,6 @@
 package com.codecool.applicationa.sign_in_screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.codecool.applicationa.R
+import com.codecool.applicationa.logged_in_activity.LoggedInActivity
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 
@@ -53,6 +55,13 @@ class SignInFragment : Fragment(), SignInContractor{
             Toast.makeText(it, resources.getString(R.string.success_sign_in),Toast.LENGTH_LONG)
                 .show()
         }
-        findNavController().navigate(R.id.action_signInFragment_to_mainPageFragment)
+
+        activity?.let{ activity ->
+            context?.let{context ->
+                val intent = Intent(context,LoggedInActivity::class.java)
+                startActivity(intent)
+                activity.finish()
+            }
+        }
     }
 }
