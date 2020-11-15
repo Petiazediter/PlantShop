@@ -14,4 +14,11 @@
     <string name="new_guy">Are you the new guy everyone talking about?</string>
     <string name="logged_out">Oops, you logged out!</string>
     <string name="sign_up">Sign up</string>
+
+    <string name="username_short">The given username is too short!</string>
+    <string name="password_short">The given password is too short!</string>
+    <string name="password_match">The given passwords are not match with eact other!</string>
+    <string name="email_format">The given email adress is not valid!</string>
+
+    <string name="error_sign_up">The given datas may not valid, or already used.</string>
 </resources>
