@@ -1,6 +1,7 @@
 package com.codecool.applicationa
 
 import android.content.SharedPreferences
+import android.util.Log
 
 class MainActivityPresenter {
 
@@ -20,10 +21,11 @@ class MainActivityPresenter {
 
     fun isAppOpenedSomewhen(sharedPreferences: SharedPreferences) {
         val result = sharedPreferences.getBoolean(IS_APP_OPENED_SOMEWHEN,false)
+        Log.d("MainActivityPresenter", "result -> $result" )
         if ( !result) {
-         //   sharedPreferences.edit()
-         //       .putBoolean(IS_APP_OPENED_SOMEWHEN,true)
-         //       .apply()
+           sharedPreferences.edit()
+                .putBoolean(IS_APP_OPENED_SOMEWHEN,true)
+               .apply()
         }
         view?.isAppOpenedReciever(result)
     }

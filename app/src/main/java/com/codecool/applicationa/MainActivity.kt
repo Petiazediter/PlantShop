@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.codecool.applicationa.splash_screen.SplashActivity
 
 class MainActivity : AppCompatActivity(), MainActivityPresenterView {
@@ -32,8 +33,9 @@ class MainActivity : AppCompatActivity(), MainActivityPresenterView {
     override fun isAppOpenedReciever(result: Boolean) {
         if ( result ){
             // If the app opened before
-
+            Log.d("MainActivity", "Yeey")
         } else {
+            Log.d("MainActivity", "not Yeey")
             // If the app not opened before start the splash screen activity
             val splashScreenActivity = Intent(applicationContext,SplashActivity::class.java)
             startActivity(splashScreenActivity)

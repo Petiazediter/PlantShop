@@ -16,13 +16,8 @@
 
         <activity
             android:name=".splash_screen.SplashActivity"
-            android:label="@string/title_activity_splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_splash"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
