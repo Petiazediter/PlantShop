@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         style="@style/LoginH1"
         android:layout_marginVertical="40dp"
-        android:text="Oops, you logged out!"
+        android:text="@string/logged_out"
         app:layout_constraintLeft_toLeftOf="@id/linear"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintRight_toRightOf="@id/linear"/>
@@ -75,10 +75,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/linear"
         app:layout_constraintTop_toBottomOf="@id/sign_in_button"
-        android:text="Are you the new guy everyone talking about?"
+        android:text="@string/new_guy"
         style="@style/SplashScreenMotto"
         app:layout_constraintRight_toRightOf="@id/linear"
-        android:gravity="left"
+        android:gravity="start"
         android:layout_marginVertical="20dp"/>
 
     <Button

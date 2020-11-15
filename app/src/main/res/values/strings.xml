@@ -11,4 +11,6 @@
     <string name="email_adress">Email adress</string>
     <string name="to_login">I already have an account</string>
     <string name="sign_in">Sign in</string>
+    <string name="new_guy">Are you the new guy everyone talking about?</string>
+    <string name="logged_out">Oops, you logged out!</string>
 </resources>
