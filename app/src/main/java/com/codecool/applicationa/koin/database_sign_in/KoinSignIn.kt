@@ -67,7 +67,7 @@ class KoinSignIn : SignInService{
                         callback.callback(false)
                     }else{
                         // If there's a user with the same id then the user is valid!
-                        callback.callback( snapshot.children.count{ (it.getValue(User::class.java)?.userId == userId)} > 0)
+                        callback.callback( snapshot.children.count{ (it.key == userId)} > 0)
                     }
                 }
             })
