@@ -1,8 +1,10 @@
 package com.codecool.applicationa
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.codecool.applicationa.splash_screen.SplashActivity
 
 class MainActivity : AppCompatActivity(), MainActivityPresenterView {
 
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity(), MainActivityPresenterView {
 
         } else {
             // If the app not opened before start the splash screen activity
+            val splashScreenActivity = Intent(applicationContext,SplashActivity::class.java)
+            startActivity(splashScreenActivity)
+            finish()
         }
     }
 }

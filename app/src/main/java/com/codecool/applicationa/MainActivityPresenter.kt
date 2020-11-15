@@ -21,9 +21,9 @@ class MainActivityPresenter {
     fun isAppOpenedSomewhen(sharedPreferences: SharedPreferences) {
         val result = sharedPreferences.getBoolean(IS_APP_OPENED_SOMEWHEN,false)
         if ( !result) {
-            sharedPreferences.edit()
-                .putBoolean(IS_APP_OPENED_SOMEWHEN,true)
-                .apply()
+         //   sharedPreferences.edit()
+         //       .putBoolean(IS_APP_OPENED_SOMEWHEN,true)
+         //       .apply()
         }
         view?.isAppOpenedReciever(result)
     }
