@@ -1,14 +1,8 @@
 package com.codecool.applicationa.koin.database_sign_up
 
+import com.codecool.applicationa.koin.serviceCallbacks
+
 interface SignUpService {
-    fun attemptRegister ( username : String, password : String, email : String, callback : signUpCallbacks.attemptRegisterCallback)
+    fun attemptRegister ( username : String, password : String, email : String, callback : serviceCallbacks.attemptRegisterCallback)
 }
 
-object signUpCallbacks{
-
-    interface attemptRegisterCallback{
-        fun onSuccess()
-        fun onError()
-    }
-
-}

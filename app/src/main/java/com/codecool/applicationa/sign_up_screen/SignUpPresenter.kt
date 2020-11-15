@@ -3,7 +3,7 @@ package com.codecool.applicationa.sign_up_screen
 import android.util.Patterns
 import com.codecool.applicationa.R
 import com.codecool.applicationa.koin.database_sign_up.SignUpService
-import com.codecool.applicationa.koin.database_sign_up.signUpCallbacks
+import com.codecool.applicationa.koin.serviceCallbacks
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -37,7 +37,7 @@ class SignUpPresenter : KoinComponent {
                 username = username,
                 password = password,
                 email = email,
-                callback = object : signUpCallbacks.attemptRegisterCallback{
+                callback = object : serviceCallbacks.attemptRegisterCallback{
                     override fun onSuccess() {
                         fragment.onSuccess()
                     }

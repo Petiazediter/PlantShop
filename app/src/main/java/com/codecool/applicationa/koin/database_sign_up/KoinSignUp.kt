@@ -2,6 +2,7 @@ package com.codecool.applicationa.koin.database_sign_up
 
 import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.User
+import com.codecool.applicationa.koin.serviceCallbacks
 import com.google.firebase.database.*
 import org.koin.core.KoinComponent
 
@@ -11,7 +12,7 @@ class KoinSignUp : KoinComponent, SignUpService {
         username: String,
         password: String,
         email: String,
-        callback: signUpCallbacks.attemptRegisterCallback
+        callback: serviceCallbacks.attemptRegisterCallback
     ) {
 
         val userTable = DatabaseSingleton.getDatabase()
@@ -47,7 +48,7 @@ class KoinSignUp : KoinComponent, SignUpService {
         })
     }
 
-    private fun registerUserDatas(user : User, password: String,databaseReference: DatabaseReference, callback : signUpCallbacks.attemptRegisterCallback) {
+    private fun registerUserDatas(user : User, password: String,databaseReference: DatabaseReference, callback : serviceCallbacks.attemptRegisterCallback) {
         DatabaseSingleton.getAuth()
             .createUserWithEmailAndPassword(user.emailAdress,password)
             .addOnCompleteListener{
