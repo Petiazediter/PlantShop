@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity(), MainActivityPresenterView {
     }
 
     override fun isAppOpenedReciever(result: Boolean) {
+        if ( result ){
+            // If the app opened before
 
+        } else {
+            // If the app not opened before start the splash screen activity
+        }
     }
 }
