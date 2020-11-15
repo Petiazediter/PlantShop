@@ -81,3 +81,16 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+app/.idea/modules.xml
+app/.idea/misc.xml
+app/.idea/gradle.xml
+app/proguard-rules.pro
+gradle/wrapper/gradle-wrapper.jar
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+gradle.properties
+gradlew
+settings.gradle
