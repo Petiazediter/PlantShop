@@ -1,5 +1,6 @@
 package com.codecool.applicationa.koin.database_sign_in
 
+import android.renderscript.Sampler
 import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.User
 import com.codecool.applicationa.koin.serviceCallbacks
@@ -53,4 +54,22 @@ class KoinSignIn : SignInService{
             }
     }
 
+
+    override fun validateUser(userId: String, callback: serviceCallbacks.validateUserCallback) {
+        DatabaseSingleton.getDatabase().getReference(DatabaseSingleton.USERS_TABLE)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onCancelled(error: DatabaseError) {
+                    callback.callback(false)
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if ( !snapshot.exists() || snapshot.children.toList().isNullOrEmpty()){
+                        callback.callback(false)
+                    }else{
+                        // If there's a user with the same id then the user is valid!
+                        callback.callback( snapshot.children.count{ (it.getValue(User::class.java)?.userId == userId)} > 0)
+                    }
+                }
+            })
+    }
 }

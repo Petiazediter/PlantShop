@@ -2,8 +2,16 @@ package com.codecool.applicationa
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.codecool.applicationa.database.DatabaseSingleton
+import com.codecool.applicationa.koin.database_sign_in.SignInService
+import com.codecool.applicationa.koin.serviceCallbacks
+import com.google.firebase.auth.FirebaseAuth
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class MainActivityPresenter {
+class MainActivityPresenter : KoinComponent {
+
+    val signInService : SignInService by inject()
 
     companion object {
         private const val IS_APP_OPENED_SOMEWHEN : String = "com.codecool.plantapp.is_app_opened"
@@ -28,5 +36,13 @@ class MainActivityPresenter {
                .apply()
         }
         view?.isAppOpenedReciever(result)
+    }
+
+    fun validateUser(userId : String){
+        signInService.validateUser(userId,object : serviceCallbacks.validateUserCallback{
+            override fun callback(result: Boolean) {
+                view?.isUserValid(result)
+            }
+        })
     }
 }

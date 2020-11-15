@@ -4,4 +4,5 @@ import com.codecool.applicationa.koin.serviceCallbacks
 
 interface SignInService {
     fun attemptSignIn ( username : String, password : String, callback : serviceCallbacks.attemptRegisterCallback)
+    fun validateUser ( userId : String, callback : serviceCallbacks.validateUserCallback)
 }

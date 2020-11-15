@@ -14,11 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationA">
-
+        <activity android:name=".logged_in_activity.LoggedInActivity"></activity>
         <activity
             android:name=".splash_screen.SplashActivity"
-            android:label="@string/title_activity_splash"/>
-
+            android:label="@string/title_activity_splash" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

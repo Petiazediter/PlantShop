@@ -7,4 +7,7 @@ object serviceCallbacks{
         fun onError()
     }
 
+    interface validateUserCallback{
+        fun callback(result : Boolean)
+    }
 }

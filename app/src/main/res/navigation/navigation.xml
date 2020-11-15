@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -21,16 +23,8 @@
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_signInFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment"
+            app:destination="@id/signUpFragment"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/mainPageFragment"
-        android:name="com.codecool.applicationa.main_page_screen.MainPageFragment"
-        android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" />
 </navigation>
