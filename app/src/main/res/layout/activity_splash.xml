@@ -26,6 +26,15 @@
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/ic_plant_pot"/>
 
-
+    <TextView
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent=".5"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/plant_icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/splash_motto"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
