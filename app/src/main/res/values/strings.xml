@@ -22,4 +22,6 @@
 
     <string name="error_sign_up">The given datas may not valid, or already used.</string>
     <string name="success_register">Registration completed!</string>
+
+    <string name="error_sign_in">The given datas are invalid!</string>
 </resources>

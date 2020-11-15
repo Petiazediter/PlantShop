@@ -10,7 +10,9 @@ import com.codecool.applicationa.R
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 
-class SignInFragment : Fragment() {
+class SignInFragment : Fragment(), SignInContractor{
+
+    val presenter = SignInPresenter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,6 +26,14 @@ class SignInFragment : Fragment() {
         to_register.setOnClickListener {
             findNavController()
                 .navigate(R.id.action_signInFragment_to_signUpFragment)
+        }
+
+        presenter.onAttach(this)
+
+        sign_in_button.setOnClickListener {
+            val username = username.text.toString()
+            val password = password.text.toString()
+            presenter.attemptSignIn(username,password)
         }
     }
 }
