@@ -27,6 +27,8 @@
         android:src="@drawable/ic_plant_pot"/>
 
     <TextView
+        style="@style/SplashScreenMotto"
+        android:id="@+id/motto"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent=".5"
         android:layout_height="wrap_content"
@@ -36,5 +38,18 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:text="@string/splash_motto"/>
+
+    <Button
+        android:elevation="10dp"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/motto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/get_started"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

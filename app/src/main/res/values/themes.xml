@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.ApplicationA" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -15,5 +15,11 @@
         <item name="android:navigationBarColor">@color/backgroundColor</item>
         <item name="android:windowLightNavigationBar">true</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SplashScreenMotto">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textSize">@dimen/motto_textSize</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
