@@ -94,3 +94,4 @@ gradle/wrapper/gradle-wrapper.properties
 gradle.properties
 gradlew
 settings.gradle
+.idea/.name
