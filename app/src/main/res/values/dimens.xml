@@ -16,4 +16,5 @@
     <dimen name="inner_frame_layout_padding">5dp</dimen>
 
     <dimen name="motto_textSize">28sp</dimen>
+    <dimen name="h1_textSize">49sp</dimen>
 </resources>
