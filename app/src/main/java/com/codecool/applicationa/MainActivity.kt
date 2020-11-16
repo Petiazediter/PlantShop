@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity(), MainActivityPresenterView {
         presenter.onAttachView(view = this)
 
         // Check if the app is opened already
+        DatabaseSingleton.getAuth()
+            .signOut()
         presenter.isAppOpenedSomewhen(applicationContext.getSharedPreferences(APP_SHARED_PREFERENCE,
             Context.MODE_PRIVATE))
     }

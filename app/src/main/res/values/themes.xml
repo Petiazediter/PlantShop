@@ -39,4 +39,10 @@
         <item name="android:drawableTint">@color/black</item>
         <item name="android:layout_marginVertical">10dp</item>
     </style>
+
+    <style name="BigButton">
+        <item name="android:padding">15dp</item>
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
 </resources>

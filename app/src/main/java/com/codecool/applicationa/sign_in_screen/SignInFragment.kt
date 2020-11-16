@@ -34,12 +34,7 @@ class SignInFragment : Fragment(), SignInContractor{
         }
 
         presenter.onAttach(this)
-        bindSignInButton()
-    }
-
-    private fun bindSignInButton(){
         sign_in_button.setOnClickListener {
-            Log.d("Click", "click click")
             val username = username.text.toString()
             val password = password.text.toString()
             presenter.attemptSignIn(username,password)
@@ -47,12 +42,10 @@ class SignInFragment : Fragment(), SignInContractor{
         }
     }
 
+
     override fun onError(messageId: Int) {
         sign_in_button.isEnabled = true
-        bindSignInButton()
-
         context?.let{
-            view?.findViewById<Button>(R.id.sign_in_button)?.isClickable = true
             Toast.makeText(it, resources.getString(messageId),Toast.LENGTH_LONG)
                 .show()
         }
@@ -60,8 +53,6 @@ class SignInFragment : Fragment(), SignInContractor{
 
     override fun onSuccess() {
         sign_in_button.isEnabled = true
-        bindSignInButton()
-
         context?.let{
             Toast.makeText(it, resources.getString(R.string.success_sign_in),Toast.LENGTH_LONG)
                 .show()

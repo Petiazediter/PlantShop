@@ -32,9 +32,11 @@ class KoinSignIn : SignInService{
                         data.getValue(User::class.java)?.let{
                             if ( it.username == username){
                                 signIn(it.emailAdress,password,callback)
+                                return
                             }
                         }
                     }
+                    callback.onError()
                 }
             }
         })
