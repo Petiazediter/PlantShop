@@ -34,7 +34,6 @@ class SignInFragment : Fragment(), SignInContractor{
         }
 
         presenter.onAttach(this)
-
         bindSignInButton()
     }
 
@@ -44,12 +43,12 @@ class SignInFragment : Fragment(), SignInContractor{
             val username = username.text.toString()
             val password = password.text.toString()
             presenter.attemptSignIn(username,password)
-            sign_in_button.isClickable = false
+            sign_in_button.isEnabled = false
         }
     }
 
     override fun onError(messageId: Int) {
-        sign_in_button.isClickable = true
+        sign_in_button.isEnabled = true
         bindSignInButton()
 
         context?.let{
@@ -60,7 +59,7 @@ class SignInFragment : Fragment(), SignInContractor{
     }
 
     override fun onSuccess() {
-        sign_in_button.isClickable = true
+        sign_in_button.isEnabled = true
         bindSignInButton()
 
         context?.let{

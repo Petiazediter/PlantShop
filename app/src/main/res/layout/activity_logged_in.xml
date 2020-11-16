@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".logged_in_activity.LoggedInActivity">
 
+    <fragment
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/logged_in_fragments"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
