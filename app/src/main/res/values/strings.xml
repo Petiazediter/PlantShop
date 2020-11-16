@@ -27,4 +27,5 @@
     <string name="success_sign_in">Sign in completed!</string>
     <string name="go_to_cart">GO TO CART</string>
     <string name="welcome">Welcome</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

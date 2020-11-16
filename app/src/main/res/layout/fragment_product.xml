@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".product_screen.ProductFragment">
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".45"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/product_bg"/>
+
+    <TextView
+        android:id="@+id/product_namme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/product_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/product_image"
+        tools:text="Product name"
+        android:textSize="24sp"
+        android:gravity="right"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/info1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/product_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_namme"
+        android:text="100cm"
+        android:textSize="15sp"
+        android:gravity="right"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/ubuntu_light"
+        android:textColor="@color/white"
+        android:letterSpacing=".2"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/product_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info1"
+        android:text="Natural light"
+        android:textSize="15sp"
+        android:gravity="right"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/ubuntu_light"
+        android:textColor="@color/white"
+        android:letterSpacing=".2"/>
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@color/teal_200"
+        app:layout_constraintWidth_percent=".5"
+        app:layout_constraintDimensionRatio="1:2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/product_price"/>
+
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/product_image"
+        app:layout_constraintBottom_toTopOf="@id/product_description"
+        tools:text="$12"
+        android:fontFamily="@font/ubuntu_bold"
+        android:textColor="@color/primaryColor"
+        android:textSize="48sp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:id="@+id/product_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/product_price"
+        app:layout_constraintBottom_toTopOf="@id/add_to_cart"
+        android:layout_marginTop="10dp"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis elit convallis sit neque, purus."
+        android:fontFamily="@font/ubuntu_regular"
+        app:layout_constraintWidth_percent=".7"
+        android:textSize="19sp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/add_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/BigButton"
+        android:text="@string/add_to_cart"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

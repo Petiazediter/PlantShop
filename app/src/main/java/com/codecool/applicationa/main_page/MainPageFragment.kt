@@ -51,6 +51,9 @@ class ProductAdapter(val list : List<PlantProduct>, val layoutInflater : LayoutI
         view.product_price.text = "$${product.productPrice}"
         Picasso.get().load(product.imageLink).into(view.product_image)
 
+        view.setOnClickListener{
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
