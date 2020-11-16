@@ -16,7 +16,7 @@
         android:src="@drawable/product_bg"/>
 
     <TextView
-        android:id="@+id/product_namme"
+        android:id="@+id/product_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/product_image"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/product_image"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_namme"
+        app:layout_constraintTop_toBottomOf="@id/product_name"
         android:text="100cm"
         android:textSize="15sp"
         android:gravity="right"
@@ -63,7 +63,7 @@
 
     <ImageView
         android:id="@+id/product_image"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@color/teal_200"
@@ -71,6 +71,7 @@
         app:layout_constraintDimensionRatio="1:2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/product_price"/>
 
     <TextView

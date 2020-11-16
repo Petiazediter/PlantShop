@@ -7,6 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.codecool.applicationa.R
+import com.codecool.applicationa.database.PlantProduct
+import com.codecool.applicationa.main_page.MainPageFragment.Companion.PRODUCT_ID
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_product.*
+import kotlinx.android.synthetic.main.fragment_product.product_image
+import kotlinx.android.synthetic.main.fragment_product.product_price
+import kotlinx.android.synthetic.main.fragment_product.product_name
 
 
 class ProductFragment : Fragment() {
@@ -23,7 +30,16 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let{ args ->
-
+            val id = args.getInt(PRODUCT_ID,-1)
+            if ( id == -1){
+                findNavController().popBackStack()
+            } else {
+                val product = PlantProduct.PRODUCT_LIST.get(id)
+                product_description.text = product.productDescription
+                product_price.text = "$${product.productPrice}"
+                Picasso.get().load(product.imageLink).into(product_image)
+                product_name.text = product.productName
+            }
         } ?: run{
             findNavController().popBackStack()
         }
