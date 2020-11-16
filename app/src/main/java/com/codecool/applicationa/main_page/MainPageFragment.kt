@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codecool.applicationa.R
 import com.codecool.applicationa.database.PlantProduct
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_main_page.*
 import kotlinx.android.synthetic.main.grid_recycler_row.view.*
 
@@ -48,6 +49,8 @@ class ProductAdapter(val list : List<PlantProduct>, val layoutInflater : LayoutI
 
         view.product_name.text = product.productName
         view.product_price.text = "$${product.productPrice}"
+        Picasso.get().load(product.imageLink).into(view.product_image)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
