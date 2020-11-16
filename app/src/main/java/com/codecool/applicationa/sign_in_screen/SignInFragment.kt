@@ -2,10 +2,12 @@ package com.codecool.applicationa.sign_in_screen
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.codecool.applicationa.R
@@ -33,24 +35,34 @@ class SignInFragment : Fragment(), SignInContractor{
 
         presenter.onAttach(this)
 
+        bindSignInButton()
+    }
+
+    private fun bindSignInButton(){
         sign_in_button.setOnClickListener {
+            Log.d("Click", "click click")
             val username = username.text.toString()
             val password = password.text.toString()
             presenter.attemptSignIn(username,password)
-            sign_in_button.isEnabled = false
+            sign_in_button.isClickable = false
         }
     }
 
     override fun onError(messageId: Int) {
-        sign_in_button.isEnabled = true
+        sign_in_button.isClickable = true
+        bindSignInButton()
+
         context?.let{
+            view?.findViewById<Button>(R.id.sign_in_button)?.isClickable = true
             Toast.makeText(it, resources.getString(messageId),Toast.LENGTH_LONG)
                 .show()
         }
     }
 
     override fun onSuccess() {
-        sign_in_button.isEnabled = true
+        sign_in_button.isClickable = true
+        bindSignInButton()
+
         context?.let{
             Toast.makeText(it, resources.getString(R.string.success_sign_in),Toast.LENGTH_LONG)
                 .show()
