@@ -50,13 +50,10 @@ class SignUpFragment : Fragment(), SignUpContractor {
             Toast.makeText(it,resources.getString(messageId),Toast.LENGTH_LONG)
                 .show()
         }
-        sign_up_button.isEnabled = true
-        sign_up_button.focusable = View.FOCUSABLE
     }
 
     override fun onSuccess() {
         sign_up_button.isEnabled = true
-        sign_up_button.focusable = View.FOCUSABLE
         context?.let{
             Toast.makeText(it,resources.getString(R.string.success_register),Toast.LENGTH_LONG)
                 .show()
