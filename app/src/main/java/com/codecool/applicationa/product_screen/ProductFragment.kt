@@ -39,6 +39,12 @@ class ProductFragment : Fragment() {
                 product_price.text = "$${product.productPrice}"
                 Picasso.get().load(product.imageLink).into(product_image)
                 product_name.text = product.productName
+
+                back_button.setOnClickListener{
+                    findNavController().popBackStack()
+                }
+
+
             }
         } ?: run{
             findNavController().popBackStack()
