@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.codecool.applicationa.R
 import com.codecool.applicationa.database.PlantProduct
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_product.product_price
 import kotlinx.android.synthetic.main.fragment_product.product_name
 
 
-class ProductFragment : Fragment() {
+class ProductFragment : Fragment(), ProductContractor {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +49,18 @@ class ProductFragment : Fragment() {
             }
         } ?: run{
             findNavController().popBackStack()
+        }
+    }
+
+    override fun onItemAddCompleted() {
+        context?.let{
+            Toast.makeText(it,resources.getString(R.string.successful_cart_add),Toast.LENGTH_SHORT ).show()
+        }
+    }
+
+    override fun onItemAddFailed() {
+        context?.let{
+            Toast.makeText(it,resources.getString(R.string.error_cart_add),Toast.LENGTH_LONG ).show()
         }
     }
 }

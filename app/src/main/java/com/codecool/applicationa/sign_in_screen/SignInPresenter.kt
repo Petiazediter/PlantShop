@@ -1,6 +1,6 @@
 package com.codecool.applicationa.sign_in_screen
-
 import com.codecool.applicationa.R
+import com.codecool.applicationa.koin.database_cart.CartService
 import com.codecool.applicationa.koin.database_sign_in.SignInService
 import com.codecool.applicationa.koin.serviceCallbacks
 import org.koin.core.KoinComponent
@@ -9,6 +9,7 @@ import org.koin.core.inject
 class SignInPresenter : KoinComponent {
 
     val signInService : SignInService by inject()
+
 
     var view : SignInContractor? = null
 
