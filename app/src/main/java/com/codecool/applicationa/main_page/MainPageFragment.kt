@@ -47,7 +47,6 @@ class MainPageFragment : Fragment() {
 
             // We need to update the adapter every time the searchbar has a new character
             search_bar.addTextChangedListener {text ->
-                Log.d("TExt", "teyxt -> ${it.toString()}")
                 if ( text.isNullOrBlank() || text.isNullOrEmpty() ){
                     adapter.updateList(PlantProduct.PRODUCT_LIST)
                 } else {
@@ -57,7 +56,6 @@ class MainPageFragment : Fragment() {
                         )
                     }
                     adapter.updateList(list)
-                    Log.d("Tag", "List-> ${list.size}")
                 }
             }
         }
