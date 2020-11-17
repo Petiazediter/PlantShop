@@ -16,4 +16,9 @@ object serviceCallbacks{
     interface getUserCartCallback{
         fun onCompleted( cartItems : List<CartItems> )
     }
+
+    interface addItemToCartCallback {
+        fun onCompleted()
+        fun onError()
+    }
 }
