@@ -1,9 +1,7 @@
 package com.codecool.applicationa.database
 
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import kotlin.coroutines.coroutineContext
 
 class DatabaseSingleton {
     companion object{

@@ -2,10 +2,12 @@ package com.codecool.applicationa.main_page
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@ import com.codecool.applicationa.main_page.MainPageFragment.Companion.PRODUCT_ID
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_main_page.*
 import kotlinx.android.synthetic.main.grid_recycler_row.view.*
+import java.util.*
 
 
 class MainPageFragment : Fragment() {
@@ -38,15 +41,38 @@ class MainPageFragment : Fragment() {
 
     fun setUpRecycler(){
         context?.let{
-            recycler.adapter = ProductAdapter(PlantProduct.PRODUCT_LIST,layoutInflater,findNavController())
+            val adapter = ProductAdapter(PlantProduct.PRODUCT_LIST,layoutInflater,findNavController())
+            recycler.adapter = adapter
             recycler.layoutManager = GridLayoutManagerFit(it)
+
+            // We need to update the adapter every time the searchbar has a new character
+            search_bar.addTextChangedListener {text ->
+                Log.d("TExt", "teyxt -> ${it.toString()}")
+                if ( text.isNullOrBlank() || text.isNullOrEmpty() ){
+                    adapter.updateList(PlantProduct.PRODUCT_LIST)
+                } else {
+                    val list = PlantProduct.PRODUCT_LIST.filter {product ->
+                        text.toString().toLowerCase(Locale.ROOT) in product.productName.toLowerCase(
+                            Locale.ROOT
+                        )
+                    }
+                    adapter.updateList(list)
+                    Log.d("Tag", "List-> ${list.size}")
+                }
+            }
         }
     }
 
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
-class ProductAdapter(val list : List<PlantProduct>, val layoutInflater : LayoutInflater,val navController : NavController) : RecyclerView.Adapter<ViewHolder>(){
+class ProductAdapter(var list : List<PlantProduct>, val layoutInflater : LayoutInflater,val navController : NavController) : RecyclerView.Adapter<ViewHolder>(){
+
+    fun updateList(list : List<PlantProduct>){
+        this.list = list
+        notifyItemRangeChanged(0,list.size)
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount(): Int = list.size
 
