@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/product_image"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/product_image"
+        app:layout_constraintTop_toBottomOf="@id/profile_button"
         tools:text="Product name"
         android:textSize="26sp"
         android:gravity="right"

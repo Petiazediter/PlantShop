@@ -1,5 +1,7 @@
 package com.codecool.applicationa.koin
 
+import com.codecool.applicationa.database.CartItems
+
 object serviceCallbacks{
 
     interface attemptRegisterCallback{
@@ -9,5 +11,9 @@ object serviceCallbacks{
 
     interface validateUserCallback{
         fun callback(result : Boolean)
+    }
+
+    interface getUserCartCallback{
+        fun onCompleted( cartItems : List<CartItems> )
     }
 }
