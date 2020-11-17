@@ -37,6 +37,7 @@ class MainPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycler()
+        go_to_cart.setOnClickListener { findNavController().navigate(R.id.action_mainPageFragment_to_cartFragment) }
     }
 
     fun setUpRecycler(){
