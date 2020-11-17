@@ -60,12 +60,12 @@ class CartQueries : CartService {
                             data.getValue(CartItems::class.java)?.let{
                                 if ( it.itemId == PlantProduct.PRODUCT_LIST.indexOf(item)){
                                     increaseQuantityOfProduct(firebaseUser.uid,data.key.toString(),it,callback)
+                                    return
                                 }
                             }
                         }
-                    } else {
-                        addNewItemToCart(firebaseUser.uid, item,callback)
                     }
+                    addNewItemToCart(firebaseUser.uid, item,callback)
                 }
             })
         }

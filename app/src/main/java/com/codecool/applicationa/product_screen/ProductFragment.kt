@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.fragment_product.product_name
 
 class ProductFragment : Fragment(), ProductContractor {
 
+    val presenter = ProductPresenter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +32,7 @@ class ProductFragment : Fragment(), ProductContractor {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onAttach(this)
         arguments?.let{ args ->
             val id = args.getInt(PRODUCT_ID,-1)
             if ( id == -1){
@@ -45,7 +48,9 @@ class ProductFragment : Fragment(), ProductContractor {
                     findNavController().popBackStack()
                 }
 
-
+                add_to_cart.setOnClickListener {
+                    presenter.onItemAddToCart(product)
+                }
             }
         } ?: run{
             findNavController().popBackStack()
