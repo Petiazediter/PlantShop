@@ -9,6 +9,7 @@ class DatabaseSingleton {
     companion object{
 
         const val USERS_TABLE = "users"
+        const val CART_TABLE = "cart"
 
         private var mDatabase : FirebaseDatabase? = null
         private var mAuth : FirebaseAuth? = null
