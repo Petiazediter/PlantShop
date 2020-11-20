@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codecool.applicationa.R
 import com.codecool.applicationa.database.CartItems
@@ -18,7 +19,9 @@ import kotlinx.android.synthetic.main.fragment_main_page.*
 import java.lang.Exception
 
 
-class CartFragment : Fragment() {
+class CartFragment : Fragment(), CartContractor {
+
+    val presenter = CartPresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +33,19 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onAttach(this)
+        presenter.getCartItems()
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.onDetach()
+    }
+
+    override fun onComplete(list: List<CartItems>) {
+        recycler.adapter = CartRecyclerAdapter(layoutInflater,list)
+        recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+    }
 }
 
 class CartRecyclerAdapter( val layoutInflater: LayoutInflater, val listOfItems : List<CartItems>) : RecyclerView.Adapter<CartRecyclerAdapter.ViewHolder>(){
