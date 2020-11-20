@@ -20,7 +20,6 @@
         app:rippleColor="@color/primaryColor"
         app:tint="@color/primaryColor" />
 
-
     <TextView
         android:id="@+id/title"
         style="@style/SplashScreenMotto"
@@ -45,6 +44,7 @@
         app:tint="@color/editBoxBackgroundColor" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_recycler"
         tools:listitem="@layout/cart_row_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
