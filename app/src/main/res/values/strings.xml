@@ -33,4 +33,5 @@
     <string name="cart_title">Cart</string>
     <string name="product_name">Name/Price</string>
     <string name="quantity">Quantity</string>
+    <string name="purchase">Purchase</string>
 </resources>
