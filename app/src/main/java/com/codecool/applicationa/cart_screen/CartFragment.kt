@@ -40,6 +40,10 @@ class CartFragment : Fragment(), CartContractor {
         presenter.onDetach()
     }
 
+    override fun onUpdateList(list : List<CartItems>){
+        setTotalOrder(list)
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onComplete(list: List<CartItems>) {
         val mList = ArrayList<CartItems>(list)
@@ -58,7 +62,6 @@ class CartFragment : Fragment(), CartContractor {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         setTotalOrder(list)
-
     }
 
     private fun setTotalOrder(list: List<CartItems>) {

@@ -32,9 +32,21 @@ class CartPresenter : KoinComponent {
 
     fun removeItemFromCart(uId : String){
         cartService.deleteItemFromCart(uId)
+        updateTotalOrder()
     }
 
     fun changeItemInCart(item : CartItems){
         cartService.setItemQuantity(item)
+        updateTotalOrder()
+    }
+
+    fun updateTotalOrder(){
+        cartService.getUserCart(
+            callback = object : serviceCallbacks.getUserCartCallback{
+                override fun onCompleted(cartItems: List<CartItems>) {
+                    view?.onUpdateList(cartItems)
+                }
+            }
+        )
     }
 }
