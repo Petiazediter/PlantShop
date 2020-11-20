@@ -1,5 +1,6 @@
 package com.codecool.applicationa.koin.database_cart
 
+import android.provider.ContactsContract
 import com.codecool.applicationa.database.CartItems
 import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.PlantProduct
@@ -113,5 +114,19 @@ class CartQueries : CartService {
             .child(uId).setValue(cartItem)
 
         callback.onCompleted()
+    }
+
+    override fun deleteItemFromCart(id: String) {
+        DatabaseSingleton.getAuth().currentUser?.let{ firebaseUser ->
+            val userCartItems = DatabaseSingleton.getDatabase().getReference(DatabaseSingleton.CART_TABLE).child(firebaseUser.uid)
+            userCartItems.child(id).removeValue()
+        }
+    }
+
+    override fun setItemQuantity(product: CartItems) {
+        DatabaseSingleton.getAuth().currentUser?.let{ firebaseUser ->
+            val userCartItems = DatabaseSingleton.getDatabase().getReference(DatabaseSingleton.CART_TABLE).child(firebaseUser.uid)
+            userCartItems.child(product.uId).setValue(product)
+        }
     }
 }

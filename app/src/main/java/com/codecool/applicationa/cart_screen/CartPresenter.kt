@@ -29,4 +29,12 @@ class CartPresenter : KoinComponent {
             }
         )
     }
+
+    fun removeItemFromCart(uId : String){
+        cartService.deleteItemFromCart(uId)
+    }
+
+    fun changeItemInCart(item : CartItems){
+        cartService.setItemQuantity(item)
+    }
 }

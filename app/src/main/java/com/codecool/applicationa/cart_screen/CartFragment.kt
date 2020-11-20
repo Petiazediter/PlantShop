@@ -44,22 +44,28 @@ class CartFragment : Fragment(), CartContractor {
     override fun onComplete(list: List<CartItems>) {
         val mList = ArrayList<CartItems>(list)
         cart_recycler.adapter = CartRecyclerAdapter(layoutInflater, mList, object : RecyclerContractor{
+            override fun onItemQuantityChanged(item: CartItems) {
+                presenter.changeItemInCart(item)
+            }
+
             override fun onItemDeleted(uId: String) {
-
+                presenter.removeItemFromCart(uId)
             }
 
-            override fun onItemQuantityChanged(uId: String, quantity: Int) {
-
-            }
         })
+
         cart_recycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
+        setTotalOrder(list)
+
+    }
+
+    private fun setTotalOrder(list: List<CartItems>) {
         val productFullPrice = list.map {
             PlantProduct.PRODUCT_LIST[it.itemId].productPrice * it.quantity
         }.sum()
         order_total.text = resources.getString(R.string.order_total) + productFullPrice.toString()
-
     }
 }
 
@@ -120,10 +126,12 @@ class CartRecyclerAdapter(
                 it?.let {
                     try {
                         setProductPrice( it.toString().toInt())
-                        recyclerContractor.onItemQuantityChanged(dbItem.uId,it.toString().toInt())
+                        dbItem.quantity = it.toString().toInt()
+                        recyclerContractor.onItemQuantityChanged(dbItem)
                     } catch (e: Exception) {
                         setProductQuantity(1)
-                        recyclerContractor.onItemQuantityChanged(dbItem.uId,1)
+                        dbItem.quantity = 1
+                        recyclerContractor.onItemQuantityChanged(dbItem)
                     }
                 }
             }
