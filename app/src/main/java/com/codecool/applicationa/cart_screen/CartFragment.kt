@@ -1,12 +1,12 @@
 package com.codecool.applicationa.cart_screen
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codecool.applicationa.R
@@ -15,13 +15,11 @@ import com.codecool.applicationa.database.PlantProduct
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.cart_row_layout.view.*
 import kotlinx.android.synthetic.main.fragment_cart.*
-import kotlinx.android.synthetic.main.fragment_main_page.*
-import java.lang.Exception
 
 
 class CartFragment : Fragment(), CartContractor {
 
-    val presenter = CartPresenter()
+    private val presenter = CartPresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,53 +40,90 @@ class CartFragment : Fragment(), CartContractor {
         presenter.onDetach()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onComplete(list: List<CartItems>) {
-        recycler.adapter = CartRecyclerAdapter(layoutInflater,list)
-        recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+        val mList = ArrayList<CartItems>(list)
+        cart_recycler.adapter = CartRecyclerAdapter(layoutInflater, mList, object : RecyclerContractor{
+            override fun onItemDeleted(uId: String) {
+
+            }
+
+            override fun onItemQuantityChanged(uId: String, quantity: Int) {
+
+            }
+        })
+        cart_recycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        val productFullPrice = list.map {
+            PlantProduct.PRODUCT_LIST[it.itemId].productPrice * it.quantity
+        }.sum()
+        order_total.text = resources.getString(R.string.order_total) + productFullPrice.toString()
+
     }
 }
 
-class CartRecyclerAdapter( val layoutInflater: LayoutInflater, val listOfItems : List<CartItems>) : RecyclerView.Adapter<CartRecyclerAdapter.ViewHolder>(){
+class CartRecyclerAdapter(
+    private val layoutInflater: LayoutInflater,
+    private val listOfItems: ArrayList<CartItems>, private val contractor: RecyclerContractor
+) :
+    RecyclerView.Adapter<CartRecyclerAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = listOfItems.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val product = listOfItems[position]
-        val item = PlantProduct.PRODUCT_LIST[product.itemId]
-
-        holder.renameProduct(item.productName)
-        holder.setProductQuantity(product.quantity,item.productPrice)
-        holder.loadImage(item.imageLink)
-
-        holder.addEditTextListener(item.productPrice)
+        holder.dbItem = listOfItems[position]
+        holder.product = PlantProduct.PRODUCT_LIST[holder.dbItem.itemId]
+        holder.recyclerContractor = contractor
+        holder.initial()
+        holder.view.delete_button.setOnClickListener {
+            contractor.onItemDeleted(holder.dbItem.uId)
+            listOfItems.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position,listOfItems.size)
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(layoutInflater.inflate(R.layout.cart_row_layout,parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(layoutInflater.inflate(R.layout.cart_row_layout, parent, false))
 
-    class ViewHolder( val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun renameProduct ( name : String) {
+        lateinit var product : PlantProduct
+        lateinit var dbItem : CartItems
+        lateinit var recyclerContractor: RecyclerContractor
+
+        fun initial(){
+            renameProduct(product.productName)
+            setProductQuantity(dbItem.quantity)
+            loadImage(product.imageLink)
+            addEditTextListener()
+        }
+
+        fun renameProduct(name: String) {
             view.product_name.text = name
         }
 
-        private fun setProductPrice( price : Int, quantity: Int ){
-            view.product_price.text = "$${quantity *price}"
+        private fun setProductPrice(quantity: Int) {
+            view.product_price.text = "$${quantity * product.productPrice}"
         }
 
-        fun setProductQuantity( quantity : Int, price: Int ){
+        fun setProductQuantity(quantity: Int) {
             view.quantity_et.setText(quantity.toString())
-            setProductPrice(price,quantity)
+            setProductPrice(quantity)
         }
 
-        fun loadImage(url : String ) = Picasso.get().load(url).into(view.product_image)
+        fun loadImage(url: String) = Picasso.get().load(url).into(view.product_image)
 
-        fun addEditTextListener(price : Int){
-            view.quantity_et.addTextChangedListener{
-                it?.let{
-                    try{
-                        setProductPrice(price,it.toString().toInt())
-                    } catch ( e : Exception){
-                        setProductQuantity( 1, price)
+        fun addEditTextListener() {
+            view.quantity_et.addTextChangedListener {
+                it?.let {
+                    try {
+                        setProductPrice( it.toString().toInt())
+                        recyclerContractor.onItemQuantityChanged(dbItem.uId,it.toString().toInt())
+                    } catch (e: Exception) {
+                        setProductQuantity(1)
+                        recyclerContractor.onItemQuantityChanged(dbItem.uId,1)
                     }
                 }
             }
