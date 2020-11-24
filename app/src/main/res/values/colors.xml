@@ -10,6 +10,7 @@
 
     <color name="backgroundColor">#ffffff</color>
     <color name="primaryColor">#2ECC71</color>
+    <color name="primaryColorShadow">#1BC061</color>
     <color name="editBoxBackgroundColor">#F2F2F2</color>
     <color name="editTextHintTextColor">#BABABA</color>
     <color name="cardBackground">#FBFBFB</color>

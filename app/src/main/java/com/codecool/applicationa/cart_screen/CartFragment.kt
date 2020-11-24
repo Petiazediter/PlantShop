@@ -1,16 +1,20 @@
 package com.codecool.applicationa.cart_screen
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codecool.applicationa.MainActivity
 import com.codecool.applicationa.R
 import com.codecool.applicationa.database.CartItems
+import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.PlantProduct
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.cart_row_layout.view.*
@@ -33,6 +37,16 @@ class CartFragment : Fragment(), CartContractor {
         super.onViewCreated(view, savedInstanceState)
         presenter.onAttach(this)
         presenter.getCartItems()
+        back_button.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        log_out_button.setOnClickListener {
+            DatabaseSingleton.getAuth().signOut()
+            val intent = Intent(context,MainActivity::class.java)
+            activity?.finish()
+            startActivity(intent)
+        }
     }
 
     override fun onStop() {

@@ -7,12 +7,12 @@
     tools:context=".main_page.MainPageFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/profile_button"
+        android:id="@+id/log_out_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_baseline_person_24"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
         app:tint="@color/primaryColor"
         android:tintMode="src_atop"
         app:backgroundTint="#33000000"

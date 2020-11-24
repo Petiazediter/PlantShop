@@ -1,5 +1,6 @@
 package com.codecool.applicationa.product_screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,11 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.codecool.applicationa.MainActivity
 import com.codecool.applicationa.R
+import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.PlantProduct
 import com.codecool.applicationa.main_page.MainPageFragment.Companion.PRODUCT_ID
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.fragment_product.*
+import kotlinx.android.synthetic.main.fragment_product.back_button
+import kotlinx.android.synthetic.main.fragment_product.log_out_button
 import kotlinx.android.synthetic.main.fragment_product.product_image
 import kotlinx.android.synthetic.main.fragment_product.product_price
 import kotlinx.android.synthetic.main.fragment_product.product_name
@@ -54,6 +60,14 @@ class ProductFragment : Fragment(), ProductContractor {
             }
         } ?: run{
             findNavController().popBackStack()
+        }
+
+        log_out_button.setOnClickListener {
+
+            DatabaseSingleton.getAuth().signOut()
+            val intent = Intent(context, MainActivity::class.java)
+            activity?.finish()
+            startActivity(intent)
         }
     }
 

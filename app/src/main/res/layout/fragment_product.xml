@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/product_image"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_button"
+        app:layout_constraintTop_toBottomOf="@id/log_out_button"
         tools:text="Product name"
         android:textSize="26sp"
         android:gravity="right"
@@ -123,12 +123,12 @@
         app:tint="@color/primaryColor" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/profile_button"
+        android:id="@+id/log_out_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_baseline_person_24"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
         app:backgroundTint="#33000000"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

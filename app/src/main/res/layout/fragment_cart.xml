@@ -20,6 +20,19 @@
         app:rippleColor="@color/primaryColor"
         app:tint="@color/primaryColor" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/log_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
+        app:backgroundTint="#33000000"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/primaryColor"
+        app:tint="@color/primaryColor" />
+
     <TextView
         android:id="@+id/title"
         style="@style/SplashScreenMotto"

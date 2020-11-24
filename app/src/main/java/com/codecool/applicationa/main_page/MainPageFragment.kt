@@ -1,6 +1,7 @@
 package com.codecool.applicationa.main_page
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,11 +12,15 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.codecool.applicationa.MainActivity
 import com.codecool.applicationa.R
+import com.codecool.applicationa.database.DatabaseSingleton
 import com.codecool.applicationa.database.PlantProduct
 import com.codecool.applicationa.main_page.MainPageFragment.Companion.PRODUCT_ID
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.fragment_main_page.*
+import kotlinx.android.synthetic.main.fragment_main_page.log_out_button
 import kotlinx.android.synthetic.main.grid_recycler_row.view.*
 import java.util.*
 
@@ -38,6 +43,12 @@ class MainPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycler()
         go_to_cart.setOnClickListener { findNavController().navigate(R.id.action_mainPageFragment_to_cartFragment) }
+        log_out_button.setOnClickListener {
+            DatabaseSingleton.getAuth().signOut()
+            val intent = Intent(context, MainActivity::class.java)
+            activity?.finish()
+            startActivity(intent)
+        }
     }
 
     fun setUpRecycler(){
