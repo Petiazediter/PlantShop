@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".logged_in_activity.LoggedInActivity">
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragment2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation"/>
+        app:navGraph="@navigation/logged_in_fragments"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

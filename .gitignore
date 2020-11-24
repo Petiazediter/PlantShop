@@ -34,6 +34,7 @@ proguard/
 
 # Android Studio captures folder
 captures/
+.idea/
 
 # IntelliJ
 *.iml
@@ -94,3 +95,4 @@ gradle/wrapper/gradle-wrapper.properties
 gradle.properties
 gradlew
 settings.gradle
+.idea/.name
